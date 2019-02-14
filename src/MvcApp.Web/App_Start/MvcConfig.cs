@@ -7,6 +7,7 @@ namespace MvcApp.Web
     {
         public static void Init()
         {
+            AreaRegistration.RegisterAllAreas();
             RegisterRoutes(RouteTable.Routes);
             RegisterGlobalFilters(GlobalFilters.Filters);
         }
@@ -18,13 +19,15 @@ namespace MvcApp.Web
             routes.MapRoute(
                 name: "Default_Root",
                 url: "",
-                defaults: new { controller = "Home", action = "Index"}
+                defaults: new { controller = "Home", action = "Index"},
+                namespaces: new[] { "MvcApp.Web.Controllers" }
             );
 
             routes.MapRoute(
                 name: "Default_Common",
                 url: "Common/{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "MvcApp.Web.Controllers" }
             );
         }
 

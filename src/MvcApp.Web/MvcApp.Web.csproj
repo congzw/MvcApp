@@ -83,6 +83,10 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Debug\Views\web.config" />
+    <Content Include="Areas\Debug\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Debug\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Debug\Views\_ViewStart.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -99,6 +103,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\MvcConfig.cs" />
+    <Compile Include="Areas\Debug\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Debug\DebugAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
