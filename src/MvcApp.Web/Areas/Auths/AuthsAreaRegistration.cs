@@ -1,15 +1,12 @@
-﻿using System.Web.Mvc;
+using System.Web.Mvc;
 
-namespace MvcApp.Web.Areas.Debug
+namespace MvcApp.Web.Areas.Auths
 {
-    public class DebugAreaRegistration : AreaRegistration
+    public class AuthsAreaRegistration : AreaRegistration
     {
         public override string AreaName
         {
-            get
-            {
-                return "Debug";
-            }
+            get { return "Auths"; }
         }
 
         public override void RegisterArea(AreaRegistrationContext context)
