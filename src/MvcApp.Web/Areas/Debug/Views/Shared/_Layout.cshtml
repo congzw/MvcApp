@@ -1,12 +1,15 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-        <title>@ViewBag.Title</title>
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/css/bootstrap.css" rel="stylesheet" />
     @RenderSection("styles", required: false)
 </head>
 <body>
-    <h2>Debug Layout</h2>
-    <hr />
-    @RenderBody()
+    <div class="container">
+        <h2>Debug Layout</h2>
+        @RenderBody()
+    </div>
+    @RenderSection("scripts", required: false)
 </body>
 </html>
