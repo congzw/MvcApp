@@ -77,6 +77,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\demo.css" />
+    <Content Include="Content\css\images\beach.jpg" />
+    <Content Include="Content\scripts\showCssjs.js" />
     <Content Include="packages.config" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\web.config" />
@@ -87,6 +90,10 @@
     <Content Include="Areas\Debug\Views\Home\Index.cshtml" />
     <Content Include="Areas\Debug\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Debug\Views\_ViewStart.cshtml" />
+    <Content Include="Views\LoadTest\Empty.cshtml" />
+    <Content Include="Views\LoadTest\_Layout.cshtml" />
+    <Content Include="Views\LoadTest\_ViewStart.cshtml" />
+    <Content Include="Views\LoadTest\ReadDb.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -106,14 +113,14 @@
     <Compile Include="Areas\Debug\Controllers\HomeController.cs" />
     <Compile Include="Areas\Debug\DebugAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\_LoadTests\LoadTestController.cs" />
+    <Compile Include="Controllers\_LoadTests\LoadTestHelper.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Content\scripts\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

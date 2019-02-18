@@ -1,0 +1,40 @@
+﻿@using MvcApp.Web.Controllers
+@{
+    var loadTestHelper = LoadTestHelper.Instance;
+    loadTestHelper.VisitCount ++;
+}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>@ViewBag.Title</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="~/Content/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/css/demo.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div id="content">
+            @RenderBody()
+        </div>
+        <h2>Total Visit Count: @loadTestHelper.VisitCount</h2>
+        <hr />
+        <div class="text-danger" id="_showCssjs"></div>
+        <hr/>
+        <div class="row">
+            <div class="col-md-4">
+                <ul>
+                    <li><a href="@Url.Action("Empty", "LoadTest")">LoadTest Empty</a></li>
+                    <li><a href="@Url.Action("ReadDb", "LoadTest")">LoadTest ReadDb</a></li>
+                    <li><a href="@Url.Action("Reset", "LoadTest")">LoadTest Reset</a></li>
+                </ul>
+            </div>
+        </div>
+        <hr />
+    </div>
+    <script src="~/Content/libs/jquery/jquery-2.1.0.js"></script>
+    <script src="~/Content/scripts/showCssjs.js"></script>
+</body>
+</html>

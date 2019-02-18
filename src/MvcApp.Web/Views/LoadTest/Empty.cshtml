@@ -1,0 +1,12 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "LoadTest Empty";
+    var message = TempData["Message"] as string;
+}
+@if (!string.IsNullOrWhiteSpace(message))
+{
+    <h2>@message</h2>
+    <hr/>
+}
+<h2>@ViewBag.Title</h2>
