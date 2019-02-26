@@ -1,12 +1,12 @@
 using System.Web.Mvc;
 
-namespace MvcApp.Web.Areas.Debug
+namespace MvcApp.Web.Areas.Setup
 {
-    public class DebugAreaRegistration : AreaRegistration
+    public class SetupAreaRegistration : AreaRegistration
     {
         public override string AreaName
         {
-            get { return "Debug"; }
+            get { return "Setup"; }
         }
 
         public override void RegisterArea(AreaRegistrationContext context)
