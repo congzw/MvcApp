@@ -1,7 +1,19 @@
-﻿@model dynamic
+﻿@using CommonFx.ConfigGroups
+@model dynamic
 
 @{
     ViewBag.Title = this.VirtualPath;
+    IList<ConfigGroup> configGroups = ViewBag.ConfigGroups;
 }
 
 <h2>@ViewBag.Title</h2>
+<hr />
+@foreach (var item in configGroups)
+{
+    <h2>@item.ConfigName</h2>
+    foreach (var entry in item.Entries.Values)
+    {
+        <p>@entry.Desc : @entry.Value</p>
+    }
+}
+

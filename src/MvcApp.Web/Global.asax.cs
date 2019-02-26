@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web;
+using CommonFx.ConfigGroups;
 
 namespace MvcApp.Web
 {
@@ -9,6 +10,10 @@ namespace MvcApp.Web
         protected void Application_Start(object sender, EventArgs e)
         {
             MvcConfig.Init();
+            //todo init by config
+            var configGroup = ConfigGroupRegistry.Instance.CreateIf("Default");
+            configGroup.AddOrReplace("Debug", "true", "调试状态");
+            configGroup.AddOrReplace("DebugLevel", "1", "调试级别");
         }
 
         protected void Session_Start(object sender, EventArgs e)

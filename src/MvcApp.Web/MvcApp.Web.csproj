@@ -118,6 +118,16 @@
   <ItemGroup>
     <Folder Include="Areas\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CommonFx\CommonFx.csproj">
+      <Project>{c9f3a91b-7d6b-4ff5-a510-68f0c29e444b}</Project>
+      <Name>CommonFx</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MvcApp.AppLib.ConfigGroups\MvcApp.AppLib.ConfigGroups.csproj">
+      <Project>{73d6feaf-61ef-4e59-a45e-e7894ebad04a}</Project>
+      <Name>MvcApp.AppLib.ConfigGroups</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
