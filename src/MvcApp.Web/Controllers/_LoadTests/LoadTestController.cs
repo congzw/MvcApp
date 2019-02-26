@@ -1,5 +1,6 @@
 using System.Web.Mvc;
 
+// ReSharper disable once CheckNamespace
 namespace MvcApp.Web.Controllers
 {
     public class LoadTestController : Controller

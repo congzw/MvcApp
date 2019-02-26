@@ -102,6 +102,10 @@
       <Project>{c9f3a91b-7d6b-4ff5-a510-68f0c29e444b}</Project>
       <Name>CommonFx</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\MvcApp.AppLib.AppConsts\MvcApp.AppLib.AppConsts.csproj">
+      <Project>{25A4B710-AE3A-4BCE-99F7-6925E6A4F44B}</Project>
+      <Name>MvcApp.AppLib.AppConsts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\MvcApp.AppLib.ConfigGroups\MvcApp.AppLib.ConfigGroups.csproj">
       <Project>{73d6feaf-61ef-4e59-a45e-e7894ebad04a}</Project>
       <Name>MvcApp.AppLib.ConfigGroups</Name>

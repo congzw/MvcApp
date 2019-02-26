@@ -1,4 +1,5 @@
 ﻿@using CommonFx.ConfigGroups
+@using CommonFx.Web.Mvc
 @model dynamic
 
 @{
@@ -7,6 +8,8 @@
 }
 
 <h2>@ViewBag.Title</h2>
+<hr/>
+<p>@configGroups.ToJsonRaw()</p>
 <hr />
 @foreach (var item in configGroups)
 {

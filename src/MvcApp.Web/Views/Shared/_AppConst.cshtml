@@ -1,0 +1,23 @@
+﻿@using CommonFx.Web.Mvc
+@using MvcApp.AppLib
+@model AppConst
+@{
+    var appConst = Model ?? AppConst.GetAppConst();
+}
+<script>
+    (function () {
+        "use strict";
+        //a global variable to make multi-page app happy
+        var appConst = @appConst.ToJsonRaw();
+        console.log('global app_const created!');
+        console.log(appConst);
+        window.app_const = appConst;
+        if (require) {
+            define('app_const', [], function () {
+                //for require modules use
+                console.log("require app_const:");
+                return appConst;
+            });
+        }
+    })();
+</script>

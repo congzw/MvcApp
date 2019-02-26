@@ -30,5 +30,29 @@ namespace CommonFx.ConfigGroups
             ConfigEntry.Reset(Entries[key], key, value, desc);
             return this;
         }
+
+        public string TryGetValue(string key, string defaultValue = null)
+        {
+            ConfigEntry result;
+            var tryGetValue = Entries.TryGetValue(key, out result);
+            return !tryGetValue ? defaultValue : result.Value;
+        }
+
+        public ConfigGroup AddOrReplaceAsJson(string key, object value, string desc = null)
+        {
+            var jsonHelper = JsonHelper.Resolve();
+            var json = jsonHelper.Serialize(value);
+            return AddOrReplace(key, json, desc);
+        }
+        public T TryGetValueAs<T>(string key, T defaultValue = default(T))
+        {
+            var tryGetValue = TryGetValue(key);
+            if (tryGetValue == null)
+            {
+                return defaultValue;
+            }
+            var jsonHelper = JsonHelper.Resolve();
+            return jsonHelper.Deserialize<T>(tryGetValue);
+        }
     }
 }

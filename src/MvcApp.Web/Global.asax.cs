@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web;
 using CommonFx.ConfigGroups;
+using MvcApp.AppLib;
 
 namespace MvcApp.Web
 {
@@ -11,7 +12,7 @@ namespace MvcApp.Web
         {
             MvcConfig.Init();
             //todo init by config
-            var configGroup = ConfigGroupRegistry.Instance.CreateIf("Default");
+            var configGroup = ConfigGroupRegistry.Instance.Default();
             configGroup.AddOrReplace("Debug", "true", "调试状态");
             configGroup.AddOrReplace("DebugLevel", "1", "调试级别");
         }
