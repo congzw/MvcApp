@@ -76,6 +76,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ConfigGroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="SetupAreaRegistration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -95,6 +96,22 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\CommonFx\CommonFx.csproj">
+      <Project>{c9f3a91b-7d6b-4ff5-a510-68f0c29e444b}</Project>
+      <Name>CommonFx</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\MvcApp.Web.Common\MvcApp.Web.Common.csproj">
+      <Project>{1448a7ce-8d40-42f4-ab46-18de5d2c3a54}</Project>
+      <Name>MvcApp.Web.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ConfigGroup\Index.cshtml">
+      <SubType>
+      </SubType>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

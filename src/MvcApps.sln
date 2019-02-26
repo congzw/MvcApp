@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcApp.Web.Areas.Setup", "M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcApp.Web.Common", "MvcApp.Web.Common\MvcApp.Web.Common.csproj", "{1448A7CE-8D40-42F4-AB46-18DE5D2C3A54}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_areas", "_areas", "{DEDB9DE7-85C7-4CCB-942D-997F01307A85}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +44,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A15BFC2F-FCA3-43EA-9C09-5B6BA2BBB079} = {DEDB9DE7-85C7-4CCB-942D-997F01307A85}
 	EndGlobalSection
 EndGlobal
