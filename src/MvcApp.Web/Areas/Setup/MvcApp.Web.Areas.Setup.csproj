@@ -78,6 +78,7 @@
   <ItemGroup>
     <Compile Include="Controllers\ConfigGroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="SetupAreaRegistration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -123,6 +124,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\ConfigGroup\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Test\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Test\_TestMenus.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Test\JsonTypes.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Test\JoinJsFiles.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,11 +1,17 @@
 ﻿@using System.Diagnostics
 @using System.Drawing
 @using CommonFx.Web.Mvc
+@{
+    ViewBag.Title = VirtualPath;
+}
+@Html.Partial("_TestMenus")
+<h2>@ViewBag.Title</h2>
+<hr/>
+
 @helper Display(object value, string desc = null)
 {
     <p>@(desc ?? value.GetType().Name) : @value.ToJsonRaw()</p>
 }
-
 @Display(true)
 @Display(100)
 @Display(-100)

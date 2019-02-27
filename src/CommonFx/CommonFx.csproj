@@ -76,9 +76,14 @@
     <Compile Include="ConfigGroups\ConfigGroup.cs" />
     <Compile Include="ConfigGroups\ConfigGroupRegistry.cs" />
     <Compile Include="DateHelper.cs" />
+    <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="HashHelper.cs" />
     <Compile Include="ConfigGroups\ConfigGroupRegistryExtensionsForDefault.cs" />
+    <Compile Include="Web\JoinJsFiles\JoinJsFile.cs" />
+    <Compile Include="Web\JoinJsFiles\JoinJsFileEntry.cs" />
+    <Compile Include="Web\JoinJsFiles\JoinJsFileRegistry.cs" />
+    <Compile Include="Web\JoinJsFiles\JoinJsFileRegistryExtensionsForRequireJs.cs" />
     <Compile Include="JsonHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResolveAsSingleton.cs" />

@@ -1,0 +1,62 @@
+﻿@using CommonFx.Extensions
+@using CommonFx.Web.JoinJsFiles
+@{
+    ViewBag.Title = VirtualPath;
+    //mock declare
+    var demoJoinFile = "~/content/scripts/_demos/joins/app_config_join.js";
+    var joinJsFile = JoinJsFileRegistry.Instance.CreateIf(demoJoinFile);
+
+    //mock added by modules
+    joinJsFile.AddOrReplace("app_config_common", "~/content/scripts/_demos/joins/app_config_common.js", "通用配置");
+    joinJsFile.AddOrReplace("app_config_area1", "~/content/scripts/_demos/joins/app_config_area1.js", "模块1的模拟配置");
+    joinJsFile.AddOrReplace("app_config_area2", "~/content/scripts/_demos/joins/app_config_area2.js", "模块2的模拟配置");
+
+    //mock invoke init logic in application_start
+    joinJsFile.Init();
+}
+@Html.Partial("_TestMenus")
+<h2>@ViewBag.Title</h2>
+<hr/>
+
+@helper ShowConfig(JoinJsFile config)
+{
+    var mapPath = config.FileServer.MapPath(config.SaveVirtualPath);
+    var lastWriteTime = File.GetLastWriteTime(mapPath);
+    var content = File.ReadAllText(mapPath);
+    var hash = config.HashHelper.HashString(content);
+    var index = 1;
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>UniqueName</th>
+            <th>Desc</th>
+            <th>VirtualPath</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var entry in config.Entries.Values)
+        {
+            <tr>
+                <th scope="row">@(index++)</th>
+                <td>@entry.UniqueName</td>
+                <td>@entry.Desc</td>
+                <td>@entry.VirtualPath</td>
+            </tr>
+        }
+        </tbody>
+        <tfoot>
+        <tr>
+            <td>
+                <div>LastWrite: @lastWriteTime.ToFormat()</div>
+                <div>Hash: @hash</div>
+            </td>
+            <td>@Path.GetFileNameWithoutExtension(config.SaveVirtualPath)</td>
+            <td>合并后的配置文件</td>
+            <td>@config.SaveVirtualPath</td>
+        </tr>
+        </tfoot>
+    </table>
+}
+
+@ShowConfig(joinJsFile)
