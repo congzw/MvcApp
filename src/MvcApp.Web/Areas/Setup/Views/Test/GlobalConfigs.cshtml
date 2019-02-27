@@ -12,6 +12,7 @@
     {
         demoConfig.AddOrReplace("A", "true", ConfigEntryType.Bool, "配置A");
         demoConfig.AddOrReplace("B", "false", ConfigEntryType.Bool, "配置B");
+        demoConfig.AddOrReplace("C", "false", ConfigEntryType.Bool, "配置C");
     }
     var apiPathHelper = ApiPathHelper.Resolve();
     var addOrUpdateConfigEntryApi = apiPathHelper.CreateMvcApi("Setup", "ConfigGroup", "AddOrUpdateConfigEntry");
@@ -102,7 +103,6 @@
 
                 var $this = $(this);
                 var key = $this.prop('id');
-                console.log(key);
 
                 for (var i = 0; i < configEntries.length; i++) {
                     var configEntry = configEntries[i];
@@ -110,7 +110,6 @@
                         var dto = $.extend(true, {}, configEntry);
                         dto.ConfigGroup = configGroup;
                         var stringValue = dto.Value;
-                        console.log(dto);
                         var oldBoolValue = parseBoolFromString(stringValue);
                         var newBoolValue = !oldBoolValue;
                         dto.Value = newBoolValue.toString().toLowerCase();
@@ -125,7 +124,6 @@
                         request.done(function (messageResult) {
                             if (messageResult.Success) {
                                 $this.prop("checked", newBoolValue);
-                                console.log('=> update suuccess ');
                                 //configEntry.Key = dto.Key;
                                 configEntry.Value = dto.Value;
                                 configEntry.Desc = dto.Desc;
@@ -134,13 +132,13 @@
                             }
                             else {
                                 $this.prop("checked", oldBoolValue);
-                                console.log('=> update failed ');
                             }
+                            console.log('=> update '+ key + ' success? ' + messageResult.Success);
                             showMessage(messageResult.Message);
                         });
 
                         request.fail(function (jqXhr, textStatus) {
-                            console.log('=> update error!');
+                            //console.log('=> update error!');
                             alert("Request failed: " + textStatus);
                         });
                         return;
