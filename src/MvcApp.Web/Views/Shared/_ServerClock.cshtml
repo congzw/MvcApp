@@ -1,0 +1,31 @@
+﻿@using CommonFx.Web.Mvc
+@{
+    var serverNow = ViewData["ServerDate"] ?? DateHelper.GetNow();
+}
+<span id="serverClock"></span>
+@using (Html.Delayed())
+{
+    <script src="~/Content/libs/basic/myclock/MyClock.js"></script>
+    <script type="text/javascript">
+
+        @*require(['myclock'], function(myClock) {
+            "use strict";
+            var serverDate = new Date('@serverNow');
+            //console.log(serverDate);
+            var helper = myClock.init(serverDate, 'serverClock', { withDayOfWeek: true, withDate: true, withColor: false });
+            helper.beginTick();
+        });*@
+
+        (function () {
+            "use strict";
+            var myClock = window["MyClock"];
+            if (!myClock) {
+                return;
+            }
+            var serverDate = new Date('@serverNow');
+            //console.log(serverDate);
+            var helper = myClock.init(serverDate, 'serverClock', { withDayOfWeek: true, withDate: true, withColor: false });
+            helper.beginTick();
+        }());
+    </script>
+}

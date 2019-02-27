@@ -1,3 +1,6 @@
-﻿@{
-    Layout = "~/Areas/Setup/Views/Shared/_Layout.cshtml";
+﻿@using MvcApp.AppLib.Common
+@{
+    var layout = LayoutHelper.Intance.AceLayout;
+    //Layout = "~/Areas/Setup/Views/Shared/_Layout.cshtml";
+    Layout = layout;
 }

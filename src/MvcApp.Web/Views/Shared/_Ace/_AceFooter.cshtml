@@ -1,0 +1,11 @@
+﻿@using CommonFx
+@{
+    var dateNow = DateHelper.GetNow();
+    var year = string.Format("{0} - {1}", 2012, dateNow.Year);
+}
+<div class="my-footer">
+    <!-- #section:basics/footer -->
+    <div class="container">
+        <div class="copyright"> Copyright &copy; @year All Rights Reserved. | 系统时间: @Html.Partial("_ServerClock")</div>
+    </div>
+</div>

@@ -1,0 +1,64 @@
+﻿@{
+    var title = ViewBag.Title ?? "中庆纳博";
+}
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]>
+<html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+    <title>@title</title>
+    <!-- Meta -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <!-- CSS Global Compulsory 必须不可省 -->
+    <link rel="stylesheet" href="~/Content/libs/ace/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/Content/libs/ace/css/font-awesome.css" />
+    <link rel="stylesheet" href="~/Content/libs/ace/css/ace-fonts.css" />
+    <link rel="stylesheet" href="~/Content/libs/ace/css/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <link rel="stylesheet" href="~/Content/css/ace-custom.css" />
+    <link rel="stylesheet" href="~/Content/css/ace_admin.css">
+    @RenderSection("styles", false)
+</head>
+<body class="myskin no-skin bg-white">
+    @Html.Partial("_Ace/_AceHeader")
+    <div class="main-container container" id="main-container">
+        <div class="main-content">
+            <div class="main-content-inner">
+                @*面包屑部分*@
+                @*<div class="breadcrumbs" id="breadcrumbs">
+                        <ul class="breadcrumb">
+                            <li>
+                                <i class="ace-icon fa fa-tachometer home-icon"></i>
+                                <a href="#">应用管理首页</a>
+                            </li>
+                        </ul>
+                    </div>*@
+            </div>
+        </div>
+    </div>
+    @RenderBody()
+    @Html.Partial("_Ace/_AceFooter")
+
+    <!-- JS Global Compulsory -->
+    <script src='/Content/libs/ace/js/jquery.js'></script>
+    <script src="/Content/libs/ace/js/bootstrap.js"></script>
+
+    <!-- page specific plugin scripts -->
+    <!-- ace scripts -->
+    <script src="/Content/libs/ace/js/ace/elements.scroller.js"></script>
+    <script src="/Content/libs/ace/js/ace/ace.js"></script>
+    @RenderSection("scripts", false)
+    @Html.RenderDelayed()
+    <!--[if lt IE 9]>
+    <script src="~/Content/libs/Unify/plugins/respond.js"></script>
+    <script src="~/Content/libs/Unify/plugins/html5shiv.js"></script>
+    <script src="~/Content/libs/Unify/plugins/placeholder-IE-fixes.js"></script>
+    <![endif]-->
+</body>
+</html>

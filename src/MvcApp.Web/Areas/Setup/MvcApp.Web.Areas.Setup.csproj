@@ -106,6 +106,10 @@
       <Project>{25A4B710-AE3A-4BCE-99F7-6925E6A4F44B}</Project>
       <Name>MvcApp.AppLib.AppConsts</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\MvcApp.AppLib.Common\MvcApp.AppLib.Common.csproj">
+      <Project>{be64bd70-def3-40ed-8554-c226145bdafd}</Project>
+      <Name>MvcApp.AppLib.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\MvcApp.AppLib.ConfigGroups\MvcApp.AppLib.ConfigGroups.csproj">
       <Project>{73d6feaf-61ef-4e59-a45e-e7894ebad04a}</Project>
       <Name>MvcApp.AppLib.ConfigGroups</Name>
