@@ -9,7 +9,6 @@ namespace MvcApp.AppLib.ConfigGroups
         private readonly ConfigGroupRegistry _configGroupRegistry;
         public ConfigGroupAppService(ConfigGroupRegistry registry)
         {
-            //todo di
             _configGroupRegistry = registry;
         }
 

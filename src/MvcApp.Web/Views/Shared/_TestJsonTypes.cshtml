@@ -1,0 +1,18 @@
+﻿@using System.Diagnostics
+@using System.Drawing
+@using CommonFx.Web.Mvc
+@helper Display(object value, string desc = null)
+{
+    <p>@(desc ?? value.GetType().Name) : @value.ToJsonRaw()</p>
+}
+
+@Display(true)
+@Display(100)
+@Display(-100)
+@Display(3.14)
+@Display(new DateTime(2000, 1, 1))
+@Display(new StackTrace(), "Object")
+@Display(Color.Red, "Struct")
+@Display(DateTimeKind.Local, "Enum")
+@Display("hello")
+@Display(Guid.Empty)
