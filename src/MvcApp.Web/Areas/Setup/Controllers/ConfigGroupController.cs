@@ -24,8 +24,15 @@ namespace MvcApp.Web.Areas.Setup.Controllers
 
         public ActionResult Edit(string groupName)
         {
-            var allConfigGroup = _configGroupAppService.GetAllConfigGroup(groupName);
+            var allConfigGroup = _configGroupAppService.GetConfigGroup(groupName);
             return View(allConfigGroup);
+        }
+
+        [HttpPost]
+        public ActionResult AddOrUpdateConfigEntry(AddOrUpdateConfigEntryDto entry)
+        {
+            var messageResult = _configGroupAppService.AddOrUpdateConfigEntry(entry);
+            return MyJson(messageResult);
         }
     }
 }

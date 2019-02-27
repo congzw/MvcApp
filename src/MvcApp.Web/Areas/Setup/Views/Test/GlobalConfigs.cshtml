@@ -1,5 +1,4 @@
 ﻿@using CommonFx.ConfigGroups
-@using CommonFx.Extensions
 @{
     ViewBag.Title = VirtualPath;
     //mock declare
@@ -9,13 +8,17 @@
     var demoConfig = configGroupRegistry.CreateIf(demoGroupName);
 
     //mock added by modules
-    demoConfig.AddOrReplace("A", "true", ConfigEntryType.Bool, "配置A");
-    demoConfig.AddOrReplace("B", "false", ConfigEntryType.Bool, "配置B");
-    //demoConfig.AddOrReplaceAsJson("A", true, "配置A");
-    //demoConfig.AddOrReplaceAsJson("B", false, "配置B");
-    //demoConfig.AddOrReplaceAsJson("C", 10, "配置C");
+    if (demoConfig.Entries.Count == 0)
+    {
+        demoConfig.AddOrReplace("A", "true", ConfigEntryType.Bool, "配置A");
+        demoConfig.AddOrReplace("B", "false", ConfigEntryType.Bool, "配置B");
+    }
+    var apiPathHelper = ApiPathHelper.Resolve();
+    var addOrUpdateConfigEntryApi = apiPathHelper.CreateMvcApi("Setup", "ConfigGroup", "AddOrUpdateConfigEntry");
+    var configEntriesJson = demoConfig.Entries.Values.ToArray().ToJsonRaw();
 }
 @Html.Partial("_TestMenus")
+
 
 @helper ShowConfig(ConfigGroup config)
 {
@@ -34,19 +37,19 @@
             @foreach (var entry in config.Entries.Values)
             {
                 <tr>
-                    <th scope="row">@(index++)</th>
+                    <th>@(index++)</th>
                     <td>@entry.Desc</td>
                     <td>@entry.Key</td>
-                    <td>@entry.Value</td>
+                    <td id="value_@entry.Key">@entry.Value</td>
                     <td>
                         <label>
                             @if (entry.Value.NbEquals("true"))
                             {
-                                <input name="switch_@entry.Key" class="ace ace-switch ace-switch-7" type="checkbox" checked="checked">
+                                <input id="@entry.Key" name="switch_@entry.Key" class="ace ace-switch ace-switch-7" type="checkbox" checked="checked">
                             }
                             else
                             {
-                                <input name="switch_@entry.Key" class="ace ace-switch ace-switch-7" type="checkbox">
+                                <input id="@entry.Key" name="switch_@entry.Key" class="ace ace-switch ace-switch-7" type="checkbox">
                             }
                             <span class="lbl"></span>
                         </label>
@@ -63,6 +66,91 @@
             </tr>
         </tfoot>
     </table>
+}
+@using (Html.Delayed())
+{
+    <script>
+        $(function () {
+
+            var configEntries = function (mvcObj) {
+                return mvcObj;
+            }(@configEntriesJson);
+
+            var configGroup = function (mvcObj) {
+                return mvcObj;
+            }('@demoGroupName');
+
+            var showMessage = function (msg) {
+                //alert(msg);
+            }
+
+            var parseBoolFromString = function (stringValue) {
+                if (stringValue === null || stringValue === undefined) {
+                    return false;
+                }
+                return stringValue.toLowerCase() === 'true';
+            };
+
+            var updateValueUi = function(key, value) {
+                var domId = '#value_' + key;
+                var $td = $(domId);
+                $td.text(value);
+            };
+
+            var $checkBtns = $('input:checkbox');
+            $checkBtns.click(function (event) {
+
+                var $this = $(this);
+                var key = $this.prop('id');
+                console.log(key);
+
+                for (var i = 0; i < configEntries.length; i++) {
+                    var configEntry = configEntries[i];
+                    if (configEntry.Key === key) {
+                        var dto = $.extend(true, {}, configEntry);
+                        dto.ConfigGroup = configGroup;
+                        var stringValue = dto.Value;
+                        console.log(dto);
+                        var oldBoolValue = parseBoolFromString(stringValue);
+                        var newBoolValue = !oldBoolValue;
+                        dto.Value = newBoolValue.toString().toLowerCase();
+
+                        var request = $.ajax({
+                            type: "POST",
+                            url: '@addOrUpdateConfigEntryApi',
+                            data: dto,
+                            dataType: 'json'
+                        });
+
+                        request.done(function (messageResult) {
+                            if (messageResult.Success) {
+                                $this.prop("checked", newBoolValue);
+                                console.log('=> update suuccess ');
+                                //configEntry.Key = dto.Key;
+                                configEntry.Value = dto.Value;
+                                configEntry.Desc = dto.Desc;
+                                configEntry.Type = dto.Type;
+                                updateValueUi(key, dto.Value);
+                            }
+                            else {
+                                $this.prop("checked", oldBoolValue);
+                                console.log('=> update failed ');
+                            }
+                            showMessage(messageResult.Message);
+                        });
+
+                        request.fail(function (jqXhr, textStatus) {
+                            console.log('=> update error!');
+                            alert("Request failed: " + textStatus);
+                        });
+                        return;
+                    }
+                }
+
+                event.preventDefault();
+            });
+        });
+    </script>
 }
 
 @ShowConfig(demoConfig)

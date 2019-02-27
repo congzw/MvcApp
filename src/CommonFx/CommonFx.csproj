@@ -80,6 +80,7 @@
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="HashHelper.cs" />
     <Compile Include="ConfigGroups\ConfigGroupRegistryExtensionsForDefault.cs" />
+    <Compile Include="MessageResult.cs" />
     <Compile Include="Web\JoinJsFiles\JoinJsFile.cs" />
     <Compile Include="Web\JoinJsFiles\JoinJsFileEntry.cs" />
     <Compile Include="Web\JoinJsFiles\JoinJsFileRegistry.cs" />
