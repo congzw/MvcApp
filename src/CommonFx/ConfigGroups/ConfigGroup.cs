@@ -18,16 +18,16 @@ namespace CommonFx.ConfigGroups
         public string GroupName { get; set; }
         public IDictionary<string, ConfigEntry> Entries { get; set; }
 
-        public ConfigGroup AddOrReplace(string key, string value, string desc = null)
+        public ConfigGroup AddOrReplace(string key, string value, ConfigEntryType type, string desc = null)
         {
             if (!Entries.ContainsKey(key))
             {
                 //add
-                Entries[key] = ConfigEntry.Create(key, value, desc);
+                Entries[key] = ConfigEntry.Create(key, value, desc, type);
                 return this;
             }
             //update
-            ConfigEntry.Reset(Entries[key], key, value, desc);
+            ConfigEntry.Reset(Entries[key], key, value, desc, type);
             return this;
         }
 
@@ -42,7 +42,7 @@ namespace CommonFx.ConfigGroups
         {
             var jsonHelper = JsonHelper.Resolve();
             var json = jsonHelper.Serialize(value);
-            return AddOrReplace(key, json, desc);
+            return AddOrReplace(key, json, ConfigEntryType.Json, desc);
         }
         public T TryGetValueAs<T>(string key, T defaultValue = default(T))
         {

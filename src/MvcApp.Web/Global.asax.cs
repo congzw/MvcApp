@@ -13,8 +13,8 @@ namespace MvcApp.Web
             MvcConfig.Init();
             //todo init by config
             var configGroup = ConfigGroupRegistry.Instance.Default();
-            configGroup.AddOrReplace("Debug", "true", "调试状态");
-            configGroup.AddOrReplace("DebugLevel", "1", "调试级别");
+            configGroup.AddOrReplace("Debug", "true", ConfigEntryType.Bool, "调试状态");
+            configGroup.AddOrReplace("DebugLevel", "1", ConfigEntryType.Int, "调试级别");
         }
 
         protected void Session_Start(object sender, EventArgs e)

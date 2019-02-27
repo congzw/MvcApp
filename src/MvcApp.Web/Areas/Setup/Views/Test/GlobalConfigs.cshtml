@@ -1,0 +1,68 @@
+﻿@using CommonFx.ConfigGroups
+@using CommonFx.Extensions
+@{
+    ViewBag.Title = VirtualPath;
+    //mock declare
+
+    var demoGroupName = "DemoGlobalConfigs";
+    var configGroupRegistry = ConfigGroupRegistry.Instance;
+    var demoConfig = configGroupRegistry.CreateIf(demoGroupName);
+
+    //mock added by modules
+    demoConfig.AddOrReplace("A", "true", ConfigEntryType.Bool, "配置A");
+    demoConfig.AddOrReplace("B", "false", ConfigEntryType.Bool, "配置B");
+    //demoConfig.AddOrReplaceAsJson("A", true, "配置A");
+    //demoConfig.AddOrReplaceAsJson("B", false, "配置B");
+    //demoConfig.AddOrReplaceAsJson("C", 10, "配置C");
+}
+@Html.Partial("_TestMenus")
+
+@helper ShowConfig(ConfigGroup config)
+{
+    var index = 1;
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>名称</th>
+                <th>标识</th>
+                <th>值</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var entry in config.Entries.Values)
+            {
+                <tr>
+                    <th scope="row">@(index++)</th>
+                    <td>@entry.Desc</td>
+                    <td>@entry.Key</td>
+                    <td>@entry.Value</td>
+                    <td>
+                        <label>
+                            @if (entry.Value.NbEquals("true"))
+                            {
+                                <input name="switch_@entry.Key" class="ace ace-switch ace-switch-7" type="checkbox" checked="checked">
+                            }
+                            else
+                            {
+                                <input name="switch_@entry.Key" class="ace ace-switch ace-switch-7" type="checkbox">
+                            }
+                            <span class="lbl"></span>
+                        </label>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+}
+
+@ShowConfig(demoConfig)
