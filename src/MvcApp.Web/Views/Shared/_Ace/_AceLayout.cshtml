@@ -1,5 +1,6 @@
 ﻿@{
     var title = ViewBag.Title ?? "中庆纳博";
+    var mainClass = this.GetLayoutWithContainer() ? "main-container container" : "main-container";
 }
 <!DOCTYPE html>
 <!--[if IE 8]>
@@ -27,7 +28,7 @@
 </head>
 <body class="myskin no-skin bg-white">
     @Html.Partial("_Ace/_AceHeader")
-    <div class="main-container container" id="main-container">
+    <div class="@mainClass" id="main-container">
         <div class="main-content">
             <div class="main-content-inner">
                 @*面包屑部分*@
@@ -41,9 +42,9 @@
                     </div>*@
             </div>
         </div>
+        @RenderBody()
+        @Html.Partial("_Ace/_AceFooter")
     </div>
-    @RenderBody()
-    @Html.Partial("_Ace/_AceFooter")
 
     <!-- JS Global Compulsory -->
     <script src='/Content/libs/ace/js/jquery.js'></script>
