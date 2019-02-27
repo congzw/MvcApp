@@ -21,5 +21,11 @@ namespace MvcApp.Web.Areas.Setup.Controllers
             ViewBag.ConfigGroups = allConfigGroups;
             return View();
         }
+
+        public ActionResult Edit(string groupName)
+        {
+            var allConfigGroup = _configGroupAppService.GetAllConfigGroup(groupName);
+            return View(allConfigGroup);
+        }
     }
 }

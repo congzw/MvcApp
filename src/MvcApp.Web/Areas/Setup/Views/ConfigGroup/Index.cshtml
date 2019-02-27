@@ -13,7 +13,7 @@
 <hr />
 @foreach (var item in configGroups)
 {
-    <h2>@item.ConfigName</h2>
+    <h2>@item.GroupName</h2>
     foreach (var entry in item.Entries.Values)
     {
         <p>@entry.Desc : @entry.Value</p>

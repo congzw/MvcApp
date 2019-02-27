@@ -75,6 +75,7 @@
     <Compile Include="ConfigGroups\ConfigEntry.cs" />
     <Compile Include="ConfigGroups\ConfigGroup.cs" />
     <Compile Include="ConfigGroups\ConfigGroupRegistry.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="HashHelper.cs" />
     <Compile Include="ConfigGroups\ConfigGroupRegistryExtensionsForDefault.cs" />
     <Compile Include="JsonHelper.cs" />

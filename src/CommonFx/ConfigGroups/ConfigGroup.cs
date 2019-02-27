@@ -5,17 +5,17 @@ namespace CommonFx.ConfigGroups
 {
     public class ConfigGroup
     {
-        public ConfigGroup(string configName)
+        public ConfigGroup(string groupName)
         {
-            if (string.IsNullOrWhiteSpace(configName))
+            if (string.IsNullOrWhiteSpace(groupName))
             {
-                throw new ArgumentNullException("configName");
+                throw new ArgumentNullException("groupName");
             }
-            ConfigName = configName;
+            GroupName = groupName;
             Entries = new Dictionary<string, ConfigEntry>(StringComparer.OrdinalIgnoreCase);
         }
     
-        public string ConfigName { get; set; }
+        public string GroupName { get; set; }
         public IDictionary<string, ConfigEntry> Entries { get; set; }
 
         public ConfigGroup AddOrReplace(string key, string value, string desc = null)
